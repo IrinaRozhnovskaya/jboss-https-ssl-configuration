@@ -1,0 +1,38 @@
+version: '2.1'
+services:
+  postgres:
+    image: healthcheck/postgres:alpine
+    restart: unless-stopped
+    ports: ["5432:5432"]
+    #hostname: db.mychat.com
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: sa
+    networks:
+      mychat.com:
+        aliases:
+          - db.mychat.com
+  jboss:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    build: .
+    restart: unless-stopped
+    ports:
+      - '5005:5005'
+      - '8443:8443'
+      - '9990:9990'
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: sa
+      POSTGRES_HOST: db.mychat.com
+    networks:
+      mychat.com:
+        aliases:
+          - my-chat.mychat.com
+          - jboss.mychat.com
+networks:
+  mychat.com:
+    driver: bridge
