@@ -37,6 +37,15 @@ Edit ${JBOSS_HOME}/standalone/configuration/standalone.xml
         <alias name="example.com"/>
     </virtual-server>
 </subsystem>
+.
+.
+.
+<socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
+    <socket-binding />
+    <socket-binding name="http" port="8080"/>
+    <socket-binding name="https" port="8443"/>
+    <socket-binding />
+</socket-binding-group>
 ```
 ## Configure Docker
 
