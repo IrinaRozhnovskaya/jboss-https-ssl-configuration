@@ -14,7 +14,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <hibernate.core.version>4.2.18.Final</hibernate.core.version>
+    <hibernate.core.version>5.4.24.Final</hibernate.core.version>
     <hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
     <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
     <javaee.version>7.0</javaee.version>
